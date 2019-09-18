@@ -11,13 +11,13 @@ function App() {
     <Router>
       <div className="App">
         <nav>
-          <link to='/login'>Login</link>
-          <link to='/friends'>Friends</link>
+          <Link to='/login'>Login</Link>
+          <Link to='/friends'>Friends</Link>
         </nav>
         <Switch>
           <PrivateRoute exact path='/friends' component={FriendList} />
-          <Route path='/login' component={Login} />
-          <Route component={Login} />
+          <Route exact path='/login' component={Login} />
+          <Route exact component={Login} />
         </Switch>
       </div>
     </Router>

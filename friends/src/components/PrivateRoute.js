@@ -8,15 +8,15 @@ import { Route, Redirect } from 'react-router-dom';
   3. It checks if the user is authenticated, if they are, it renders the “component” prop. If not, it redirects the user to /login.
 */
 
-const PrivateRoute = ({ component: FriendList, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
     // const Component = props.component
     return (
         <Route 
             {...rest}
-            render={() => {
+            render={ () => {
                 if(localStorage.getItem('token')) {
                     // if token is in localStorage, render the given component
-                    return <FriendList />;
+                    return <Component />;
                 } else {
                     return <Redirect to='/login' />
                 }
