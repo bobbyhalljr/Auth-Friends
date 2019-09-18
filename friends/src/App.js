@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 
 import FriendList from './components/FriendList';
@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
-          <Link to='/login'>Login</Link>
-          <Link to='/friends'>Friends</Link>
+        <nav className='nav'>
+          <NavLink className='link' to='/login'>Login</NavLink>
+          <NavLink className='link' to='/friends'>Friends</NavLink>
         </nav>
         <Switch>
           <PrivateRoute exact path='/friends' component={FriendList} />

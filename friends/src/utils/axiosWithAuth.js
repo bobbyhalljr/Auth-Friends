@@ -8,7 +8,7 @@ export const axiosWithAuth = () => {
         headers: {
         Authorization: {
         toString () {
-        return localStorage.getItem('token')
+        return token;
       }
     }
   }
