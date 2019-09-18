@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({ 
-        credentials: {
             username: '',
             password: '', 
-        }
      })
 
 
         const login = e => {
             e.preventDefault();
-            axiosWithAuth().post('/login/', credentials)
+            axiosWithAuth().post('/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.payload)
                 // redirect to apps main page
-                credentials.history.push('/friends')
+                props.history.push('/friends')
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.response))
     }
 
     const handleChange = e => {
         setCredentials({ 
-            credentials: {
                 ...credentials,
                 [e.target.name]: e.target.value
-            }
         })
     }
 
